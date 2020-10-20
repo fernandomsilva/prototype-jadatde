@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Esse script está no root "Scripts" por se tratar da parte de behavior que se repetirá para todas as unidades, qualquer que sejam.
-public class TestUnitBehavior : MonoBehaviour
+public class TestUnitBehavior : GeneralUnitBehavior
 {
     //código para movimentação da unidade teste.
     private Vector3 speed;
 
-    public float health = 1.0f; //define a vida a unidade; pode vir a ser int, dependendo se quebraremos ou não o dano em frações.
-    public float attackDamage = 1.0f; //define o dano causado por ataque da unidade; pode vir a ser int, pela mesma razão de cima.
-    public float attackSpeed = 1.0f; //define quantas vezes a unidade ataca por segundo.
-    public float moveSpeed = 1.0f; //define o quão rápido a unidade se move na tela.
+    //public float health = 1.0f; //define a vida a unidade; pode vir a ser int, dependendo se quebraremos ou não o dano em frações.
+    //public float attackDamage = 1.0f; //define o dano causado por ataque da unidade; pode vir a ser int, pela mesma razão de cima.
+    //public float attackSpeed = 1.0f; //define quantas vezes a unidade ataca por segundo.
+    //public float moveSpeed = 1.0f; //define o quão rápido a unidade se move na tela.
     //mais atributos serão inseridos a medida que sejam pertinentes ao desenvolvimento do projeto.
 
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class TestUnitBehavior : MonoBehaviour
     }
 
     //função que vai definir os atributos da unidade ao summoná-la.
-    public void isSummoned(float ht, float atk, float atkS, float mS)
+    /*public void isSummoned(float ht, float atk, float atkS, float mS)
     {
         health = ht;
         attackDamage = atk;
@@ -45,7 +45,7 @@ public class TestUnitBehavior : MonoBehaviour
             Destroy(gameObject);
             //provisóriamente, o objeto será destruído.
         }
-    }
+    }*/
 
     //função para contato com inimigo e "dar dano".
     public void OnTriggerEnter2D (Collider2D target)

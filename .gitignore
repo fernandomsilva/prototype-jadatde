@@ -1,2 +1,7 @@
 /Library/*
 /Temp/*
+/obj/*
+/.vs/*
+/Logs/*
+/Assembly-CSharp.csproj
+/prototype-jadatde.sln
