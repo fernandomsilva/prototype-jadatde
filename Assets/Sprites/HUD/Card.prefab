@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7471856d025cf6047bc8cd8f63ae126c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatsScript: {fileID: 0}
+  backgroundMouseFlag: {fileID: 0}
 --- !u!114 &2495937738392269251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,11 +140,13 @@ MonoBehaviour:
   cardName: 
   type: 
   element: 
-  HP: 0
-  attack: 0
+  summonType: 
+  health: 0
+  attackDamage: 0
   attackSpeed: 0
   moveSpeed: 0
   amount: 0
   damage: 0
-  area: 0
+  magnitude: 0
+  intensity: 0
   cost: 0
