@@ -150,6 +150,7 @@ Transform:
   m_Children:
   - {fileID: 2140315475}
   - {fileID: 1581974877}
+  - {fileID: 638193583}
   m_Father: {fileID: 212456783}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -753,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b0b99b5d86db043a2185a1040d2266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardSprites: []
+  cardDataFile: {fileID: 4900000, guid: 1bc54c690ebaab744814d2b1ba615421, type: 3}
 --- !u!1 &759239503
 GameObject:
   m_ObjectHideFlags: 0
