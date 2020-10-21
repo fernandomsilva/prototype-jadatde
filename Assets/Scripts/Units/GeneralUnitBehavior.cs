@@ -16,6 +16,12 @@ public class GeneralUnitBehavior : MonoBehaviour
     {
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    
     //função que vai definir os atributos da unidade ao summoná-la.
     public void isSummoned(float ht, float atk, float atkS, float mS)
     {
@@ -30,7 +36,7 @@ public class GeneralUnitBehavior : MonoBehaviour
     {
         health -= damage;
         //damage será devidamente multiplicada por valores futuros de tipo e elemento de dano, bem como resistências a elementos.
-        Debug.Log("I was hit for " + damage + " damage! Only " + (health) + " hitpoints remain");
+        Debug.Log("I " + gameObject.name + " was hit for " + damage + " damage! Only " + (health) + " hitpoints remain");
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -38,10 +44,8 @@ public class GeneralUnitBehavior : MonoBehaviour
             //provisóriamente, o objeto será destruído.
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnMouseDown()
     {
-        
+        Destroy(gameObject);
     }
 }
