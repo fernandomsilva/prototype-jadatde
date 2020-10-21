@@ -14,8 +14,15 @@ public class GeneralUnitBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Vector3 position = new Vector3(transform.position.x, transform.position.y, 0); //coloca todas as unidades criadas no eixo z 0.
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    
     //função que vai definir os atributos da unidade ao summoná-la.
     public void isSummoned(float ht, float atk, float atkS, float mS)
     {
@@ -30,7 +37,7 @@ public class GeneralUnitBehavior : MonoBehaviour
     {
         health -= damage;
         //damage será devidamente multiplicada por valores futuros de tipo e elemento de dano, bem como resistências a elementos.
-        Debug.Log("I was hit for " + damage + " damage! Only " + (health) + " hitpoints remain");
+        Debug.Log("I " + gameObject.name + " was hit for " + damage + " damage! Only " + (health) + " hitpoints remain");
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -39,9 +46,18 @@ public class GeneralUnitBehavior : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter2D(Collider2D target) //attacks between opposing factions.
     {
-        
+        if (this.tag == "AlliedUnit" && target.tag == "EnemyUnit" || this.tag == "EnemyUnit" && target.tag == "AlliedUnit")
+        {
+            target.gameObject.SendMessage("OnHit", attackDamage);
+            this.gameObject.SendMessage("OnHit", attackDamage);
+        }
+    }
+
+    public void OnMouseDown()
+    {
+        if (Input.GetKey("left shift"))
+            Destroy(gameObject);
     }
 }
