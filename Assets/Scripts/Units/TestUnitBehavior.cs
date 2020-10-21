@@ -19,15 +19,7 @@ public class TestUnitBehavior : GeneralUnitBehavior
     {
         transform.position += speed * Time.deltaTime;
     }
-
-    public void OnTriggerEnter2D (Collider2D target)
-    {
-        if (target.tag == "TestUnit" || target.tag == "EnemyUnit")
-        {
-            target.gameObject.SendMessage("OnHit", attackDamage);
-        }
-    }
-    
+      
     // Update is called once per frame
     void Update()
     {
@@ -35,11 +27,6 @@ public class TestUnitBehavior : GeneralUnitBehavior
         speed = Vector3.zero;
         speed.y = 5f * Input.GetAxis("Vertical");
         speed.x = 5f * Input.GetAxis("Horizontal");
-
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
     }
 
 }

@@ -6,19 +6,26 @@ using UnityEngine;
 public class AllyBehavior : GeneralUnitBehavior
 {
     public GameObject mainTarget; //stores GameObject of current target.
-    public GameObject nexusTarget; //stores GameObject of the Nexus.
+    public GameObject nexusTarget; //stores GameObject of the Nexus, in case of allies it's the Nexus Regroup Area.
     private Vector2 targetLocation; //used to target mainTarget.
     private bool shouldMove = true; //defines if object should or not move.
-    public float followDistance = 16.0f; //variable that defines range for target acquisition.
+    public float followDistance = 24.0f; //variable that defines range for target acquisition.
 
     // Start is called before the first frame update
     void Start()
     {
-        nexusTarget = GameObject.Find("NexusRegroup");
+        nexusTarget = GameObject.Find("Nexus Regroup");
     }
 
     void FixedUpdate()
     {
+        if (shouldMove == false)
+        {
+            if (mainTarget != nexusTarget) //verifies if the ally has a target other than the nexus and assign to it.
+            {
+                shouldMove = true;
+            }
+        }
         if (mainTarget == null && shouldMove) //tests if main target exists, if not, attributes Nexus. Prevents targeting a destroyed object.
         {
             mainTarget = nexusTarget;

@@ -14,6 +14,7 @@ public class GeneralUnitBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Vector3 position = new Vector3(transform.position.x, transform.position.y, 0); //coloca todas as unidades criadas no eixo z 0.
     }
 
     // Update is called once per frame
@@ -44,8 +45,19 @@ public class GeneralUnitBehavior : MonoBehaviour
             //provisóriamente, o objeto será destruído.
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D target) //attacks between opposing factions.
+    {
+        if (this.tag == "AlliedUnit" && target.tag == "EnemyUnit" || this.tag == "EnemyUnit" && target.tag == "AlliedUnit")
+        {
+            target.gameObject.SendMessage("OnHit", attackDamage);
+            this.gameObject.SendMessage("OnHit", attackDamage);
+        }
+    }
+
     public void OnMouseDown()
     {
-        Destroy(gameObject);
+        if (Input.GetKey("left shift"))
+            Destroy(gameObject);
     }
 }

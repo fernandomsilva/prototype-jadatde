@@ -14,7 +14,7 @@ public class EnemyBehavior : GeneralUnitBehavior
     // Start is called before the first frame update
     void Start()
     {
-        nexusTarget = GameObject.Find("NexusBase");
+        nexusTarget = GameObject.Find("Nexus Base");
     }
 
     void FixedUpdate()
