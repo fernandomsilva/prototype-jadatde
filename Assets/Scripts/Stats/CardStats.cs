@@ -12,12 +12,12 @@ public class CardStats : MonoBehaviour
 	public string summonType;
 	public int health;
 	public int attackDamage;
-	public int attackSpeed;
-	public int moveSpeed;
+	public float attackSpeed;
+	public float moveSpeed;
 	public int amount;
 	public int damage;
-	public int magnitude;
-	public int intensity;
+	public float magnitude;
+	public float intensity;
 	public int cost;
 	
 	private SpriteRenderer mySpriteRenderer;
@@ -64,10 +64,10 @@ public class CardStats : MonoBehaviour
 					attackDamage = int.Parse(attributeDict[key]);
 					break;
 				case "attackSpeed":
-					attackSpeed = int.Parse(attributeDict[key]);
+					attackSpeed = float.Parse(attributeDict[key]);
 					break;
 				case "moveSpeed":
-					moveSpeed = int.Parse(attributeDict[key]);
+					moveSpeed = float.Parse(attributeDict[key]);
 					break;
 				case "amount":
 					amount = int.Parse(attributeDict[key]);
@@ -76,10 +76,10 @@ public class CardStats : MonoBehaviour
 					damage = int.Parse(attributeDict[key]);
 					break;
 				case "magnitude":
-					magnitude = int.Parse(attributeDict[key]);
+					magnitude = float.Parse(attributeDict[key]);
 					break;
 				case "intensity":
-					intensity = int.Parse(attributeDict[key]);
+					intensity = float.Parse(attributeDict[key]);
 					break;
 				case "cost":
 					cost = int.Parse(attributeDict[key]);
