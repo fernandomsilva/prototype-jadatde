@@ -34,10 +34,9 @@ public class PlayerStats : MonoBehaviour
 		manaBarOriginalX = manaBar.transform.position.x;
 		manaBarSpriteRenderer = manaBar.GetComponent<SpriteRenderer>();
 		manaToSpendSpriteRenderer = manaToSpend.GetComponent<SpriteRenderer>();
-		
-		//LoseHealth(35);
+
+    //LoseHealth(35);
 		//SpendMana(750);
-		
 		//displayManaToSpend(100);
     }
 
