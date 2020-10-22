@@ -8,6 +8,7 @@ TagManager:
   - AlliedUnit
   - EnemyUnit
   - Nexus
+  - Effects
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Effects
   - 
   - 
   - 
