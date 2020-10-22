@@ -6,9 +6,10 @@ using UnityEngine;
 public class GeneralUnitBehavior : MonoBehaviour
 {
     public float health = 1.0f; //define a vida a unidade; pode vir a ser int, dependendo se quebraremos ou não o dano em frações.
-    public float attackDamage = 1.0f; //define o dano causado por ataque da unidade; pode vir a ser int, pela mesma razão de cima.
+    public int attackDamage = 1; //define o dano causado por ataque da unidade; pode vir a ser int, pela mesma razão de cima.
     public float attackSpeed = 1.0f; //define quantas vezes a unidade ataca por segundo.
     public float moveSpeed = 1.0f; //define o quão rápido a unidade se move na tela.
+    public bool hasCollided = false;
     //mais atributos serão inseridos a medida que sejam pertinentes ao desenvolvimento do projeto.
 
     // Start is called before the first frame update
@@ -20,11 +21,14 @@ public class GeneralUnitBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (hasCollided)
+        {
+            Destroy(gameObject);
+        }
     }
     
     //função que vai definir os atributos da unidade ao summoná-la.
-    public void isSummoned(float ht, float atk, float atkS, float mS)
+    public void isSummoned(float ht, int atk, float atkS, float mS)
     {
         health = ht;
         attackDamage = atk;
@@ -33,7 +37,7 @@ public class GeneralUnitBehavior : MonoBehaviour
     }
 
     //função a ser chamada quando qualquer unitade sofre dano, a ser modificada no futuro com "tipo de dano" e "elemento de dano".
-    public void OnHit(float damage)
+    public void OnHit(int damage)
     {
         health -= damage;
         //damage será devidamente multiplicada por valores futuros de tipo e elemento de dano, bem como resistências a elementos.
@@ -48,11 +52,24 @@ public class GeneralUnitBehavior : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D target) //attacks between opposing factions.
     {
-        if (this.tag == "AlliedUnit" && target.tag == "EnemyUnit" || this.tag == "EnemyUnit" && target.tag == "AlliedUnit")
+        if (hasCollided == false)
         {
-            target.gameObject.SendMessage("OnHit", attackDamage);
-            this.gameObject.SendMessage("OnHit", attackDamage);
+            if (this.tag == "AlliedUnit" && target.tag == "EnemyUnit" || this.tag == "EnemyUnit" && target.tag == "AlliedUnit")
+            {
+                target.gameObject.SendMessage("OnHit", attackDamage);
+                //this.gameObject.SendMessage("OnHit", attackDamage);
+                hasCollided = true;
+            }
+            if (this.tag == "EnemyUnit" && target.tag == "Nexus")
+            {
+                target.gameObject.SendMessage("NexusHit", attackDamage);
+                //Debug.Log(target.name);
+                hasCollided = true;
+                Destroy(gameObject);
+
+            }
         }
+        
     }
 
     public void OnMouseDown()

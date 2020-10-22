@@ -180,6 +180,7 @@ MonoBehaviour:
   attackDamage: 1
   attackSpeed: 1
   moveSpeed: 1
+  hasCollided: 0
   mainTarget: {fileID: 0}
   nexusTarget: {fileID: 0}
   followDistance: 16
