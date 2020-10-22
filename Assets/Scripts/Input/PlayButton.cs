@@ -8,6 +8,7 @@ public class PlayButton : MonoBehaviour
     public GameObject countdown;
     public GameObject enemySpawner;
     public GameObject enemyAlive;
+    public GameObject winText;
     public bool hasStarted;
     public bool waveCleared;
     public float timeUntil;
@@ -49,16 +50,18 @@ public class PlayButton : MonoBehaviour
                 countdown.GetComponent<Text>().text = "Wave " + currentWave + "/" + numberWaves + " is here!";
                 enemySpawner.GetComponent<EnemySpawner>().SpawnEnemies();
                 timeUntil = 5.0f;
+                waveCleared = false;
                 currentWave++;
             }
         }
-        if (currentWave - 1 == numberWaves && waveCleared == false)
-        {
-            countdown.GetComponent<Text>().text = "Wave " + (currentWave-1) + "/" + numberWaves + " is here!";
-        }
+        //if (currentWave - 1 == numberWaves && waveCleared == false)
+        //{
+        //    countdown.GetComponent<Text>().text = "Wave " + (currentWave-1) + "/" + numberWaves + " is here!";
+        //}
         if (currentWave - 1 == numberWaves && waveCleared == true)
         {
-            countdown.GetComponent<Text>().text = "All cleared! Press R to reset.";
+            countdown.GetComponent<Text>().text = "All cleared!";
+            winText.GetComponent<Text>().text = "You Win!\n Press R to reset and play again.";
         }
 
     }
