@@ -21,7 +21,10 @@ public class GeneralUnitBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (hasCollided)
+        {
+            Destroy(gameObject);
+        }
     }
     
     //função que vai definir os atributos da unidade ao summoná-la.

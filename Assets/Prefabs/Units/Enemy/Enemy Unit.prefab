@@ -179,7 +179,8 @@ MonoBehaviour:
   health: 1
   attackDamage: 1
   attackSpeed: 1
-  moveSpeed: 1
+  moveSpeed: 3
+  hasCollided: 0
   mainTarget: {fileID: 0}
   nexusTarget: {fileID: 0}
   followDistance: 50

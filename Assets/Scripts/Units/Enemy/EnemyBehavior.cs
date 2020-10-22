@@ -23,12 +23,12 @@ public class EnemyBehavior : GeneralUnitBehavior
         {
             mainTarget = nexusTarget;
             targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y); //gets Target location.
-            transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed / 30); //moves Unit towards target.
+            transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime) ; //moves Unit to target.
         }
         if (shouldMove) //tests if it should move towards nexus in case first if didn't work.
         {
             targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed / 30);
+            transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
         }
     }
 
