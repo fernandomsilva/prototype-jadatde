@@ -35,10 +35,10 @@ public class PlayerStats : MonoBehaviour
 		manaBarSpriteRenderer = manaBar.GetComponent<SpriteRenderer>();
 		manaToSpendSpriteRenderer = manaToSpend.GetComponent<SpriteRenderer>();
 		
-		LoseHealth(35);
-		SpendMana(750);
+		//LoseHealth(35);
+		//SpendMana(750);
 		
-		displayManaToSpend(100);
+		//displayManaToSpend(100);
     }
 
 	public void LoseHealth(int quantity)
@@ -67,7 +67,7 @@ public class PlayerStats : MonoBehaviour
 		bar.transform.Translate(translateX, 0.0f, 0.0f);
 	}
 	
-	void displayManaToSpend(int quantity)
+	public void displayManaToSpend(int quantity)
 	{
 		float factor = ((float) quantity) / ((float) maxMana);
 		float newScaleX = factor * manaBarFullLength;
@@ -75,6 +75,13 @@ public class PlayerStats : MonoBehaviour
 		manaToSpend.transform.localScale = new Vector3(newScaleX, manaToSpend.transform.localScale.y, manaToSpend.transform.localScale.z);
 		manaToSpend.transform.position = manaBar.transform.position;
 		manaToSpend.transform.Translate((manaBarSpriteRenderer.bounds.size.x / 2.0f) - (manaToSpendSpriteRenderer.bounds.size.x / 2.0f), 0.0f, 0.0f);
+		
+		manaToSpend.SetActive(true);
+	}
+	
+	public void hideManaToSpend()
+	{
+		manaToSpend.SetActive(false);
 	}
 
     // Update is called once per frame
