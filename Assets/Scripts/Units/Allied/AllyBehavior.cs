@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class AllyBehavior : GeneralUnitBehavior
 {
-    public GameObject mainTarget; //stores GameObject of current target.
     public GameObject nexusTarget; //stores GameObject of the Nexus, in case of allies it's the Nexus Regroup Area.
     private Vector2 targetLocation; //used to target mainTarget.
-    private bool shouldMove = true; //defines if object should or not move.
     public float followDistance = 24.0f; //variable that defines range for target acquisition.
 
     // Start is called before the first frame update
     void Start()
     {
         nexusTarget = GameObject.Find("Nexus Regroup");
+        mainTarget = nexusTarget;
     }
 
-    void FixedUpdate()
+    new void FixedUpdate()
     {
+        base.FixedUpdate();
         if (shouldMove == false)
         {
-            if (mainTarget != nexusTarget) //verifies if the ally has a target other than the nexus and assign to it.
+            if (mainTarget == null) //verifies if the ally has a target if not, assign nexus point to it.
             {
+                mainTarget = nexusTarget;
                 shouldMove = true;
             }
         }
@@ -57,6 +58,10 @@ public class AllyBehavior : GeneralUnitBehavior
                 {
                     if ((target.transform.position - transform.position).sqrMagnitude == targetDistances[0]) //which object has min distance.
                     {
+                        if (mainTarget != target)
+                        {
+                            shouldMove = true;
+                        }
                         mainTarget = target; //defines such object as target.
                         break;
                     }
@@ -73,14 +78,16 @@ public class AllyBehavior : GeneralUnitBehavior
         }
     }
 
-    void OnTriggerStay2D(Collider2D collisionTarget) //if object stays connected to target it stops moving.
+    new void OnTriggerStay2D(Collider2D collisionTarget) //if object stays connected to target it stops moving.
     {
-        if (collisionTarget == mainTarget.GetComponent<Collider2D>())
+        if (collisionTarget.tag == mainTarget.tag)
         {
+            base.OnTriggerStay2D(collisionTarget);
             shouldMove = false;
             //Debug.Log("I " + gameObject.name + " am colliding with my target.");
         }
     }
+
     void OnTriggerExit2D(Collider2D collisionTarget) //if object loses all his collisions, he goes back to moving.
     {
         shouldMove = true;

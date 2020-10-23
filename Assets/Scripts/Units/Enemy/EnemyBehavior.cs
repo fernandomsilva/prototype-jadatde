@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class EnemyBehavior : GeneralUnitBehavior
 {
-    public GameObject mainTarget; //stores GameObject of current target.
     public GameObject nexusTarget; //stores GameObject of the Nexus.
     private Vector2 targetLocation; //used to target mainTarget.
-    private bool shouldMove = true; //defines if object should or not move.
     public float followDistance = 8.0f; //variable that defines range for target acquisition.
     
     // Start is called before the first frame update
     void Start()
     {
         nexusTarget = GameObject.Find("Nexus Base");
+        mainTarget = nexusTarget;
     }
 
-    void FixedUpdate()
+    public new void FixedUpdate()
     {
+        base.FixedUpdate();
         if (mainTarget == null && shouldMove) //tests if main target exists, if not, attributes Nexus. Prevents targeting a destroyed object.
         {
             mainTarget = nexusTarget;
@@ -50,6 +50,10 @@ public class EnemyBehavior : GeneralUnitBehavior
                 {
                     if ((target.transform.position - transform.position).sqrMagnitude == targetDistances[0]) //which object has min distance.
                     {
+                        if (mainTarget != target)
+                        {
+                            shouldMove = true;
+                        }
                         mainTarget = target; //defines such object as target.
                         break;
                     }
@@ -66,17 +70,19 @@ public class EnemyBehavior : GeneralUnitBehavior
         }
     }
 
-    void OnTriggerStay2D(Collider2D collisionTarget) //if object stays connected to target it stops moving.
+    new void OnTriggerStay2D(Collider2D collisionTarget) //if object stays connected to target it stops moving.
     {
-        if (collisionTarget == mainTarget.GetComponent<Collider2D>())
+        if (collisionTarget.tag == mainTarget.tag)
         {
+            base.OnTriggerStay2D(collisionTarget);
             shouldMove = false;
-            //Debug.Log("I " + gameObject.name + " am colliding with my target.");
+            //Debug.Log("I " + gameObject.name + " am colliding with a valid target.");
         }
     }
+
     void OnTriggerExit2D(Collider2D collisionTarget) //if object loses all his collisions, he goes back to moving.
     {
         shouldMove = true;
-        //Debug.Log("I " + gameObject.name + " am NOT colliding with my target.");
+        //Debug.Log("I " + gameObject.name + " am NOT colliding with a valid target.");
     }
 }
