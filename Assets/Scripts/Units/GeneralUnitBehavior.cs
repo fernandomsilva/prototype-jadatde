@@ -92,7 +92,7 @@ public class GeneralUnitBehavior : MonoBehaviour
     {
         health -= damage;
         //damage será devidamente multiplicada por valores futuros de tipo e elemento de dano, bem como resistências a elementos.
-        //Debug.Log("I " + gameObject.name + " was hit for " + damage + " damage! Only " + (health) + " hitpoints remain");
+        Debug.Log("I " + gameObject.name + " was hit for " + damage + " damage! Only " + (health) + " hitpoints remain");
 
         if (health <= 0)
         {

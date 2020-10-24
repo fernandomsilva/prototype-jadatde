@@ -22,26 +22,56 @@ public class CardStats : MonoBehaviour
 	public string effect1;
 	public string effect2;
 	
-	private SpriteRenderer mySpriteRenderer;
+	public bool toRemove;
 	
+	public SpriteRenderer mySpriteRenderer;
+	private Sprite defaultCardSprite;
 	
     // Start is called before the first frame update
     void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+		defaultCardSprite = Instantiate(mySpriteRenderer.sprite);
 		
+		toRemove = false;
     }
+	
+	public void ResetCard()
+	{
+		mySpriteRenderer.sprite = defaultCardSprite;
+		
+		cardName = "";
+		type = "";
+		element = "";
+		summonType = "";
+		health = 0;
+		attackDamage = 0;
+		attackSpeed = 0.0f;
+		moveSpeed = 0.0f;
+		amount = 0;
+		damage = 0;
+		magnitude = 0.0f;
+		intensity = 0.0f;
+		cost = 0;
+		effect1 = "";
+		effect2 = "";
+		
+		toRemove = false;
+	}
 
-	public void loadCard(string newName)
+	public void LoadCard(string newName)
 	{
 		cardName = newName;
-		LoadCardImage();
+		if (newName != "")
+		{
+			LoadCardImage();
+			ParseCardAttributes(cardDatabase.GetCardAttributes(cardName));
+		}
 	}
 	
 	void LoadCardImage()
 	{
 		mySpriteRenderer.sprite = cardDatabase.GetCardSprite(cardName);
-		ParseCardAttributes(cardDatabase.GetCardAttributes(cardName));
 	}
 	
 	void ParseCardAttributes(Dictionary<string, string> attributeDict)
