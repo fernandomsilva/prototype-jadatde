@@ -207,8 +207,11 @@ MonoBehaviour:
   attackSpeed: 1
   moveSpeed: 1
   time: 0
+  summonTime: 0
   variavelTeste: {x: 0, y: 0, z: 0, w: 0}
+  startMove: 0
   shouldMove: 1
+  doneSummon: 0
   attackStick: {fileID: 8960974287496970266, guid: c963190026b53624583fc3a3ebfd9bfd,
     type: 3}
   nexusTarget: {fileID: 0}

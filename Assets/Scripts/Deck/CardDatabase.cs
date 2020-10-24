@@ -12,7 +12,6 @@ public class CardDatabase : MonoBehaviour
 	// Start is called before the first frame update
     void Start()
     {
-		
         cardSprites = Resources.LoadAll<Sprite>("Cards/");
 		cardAttributes = new Dictionary<string, Dictionary<string, string>>();
 
