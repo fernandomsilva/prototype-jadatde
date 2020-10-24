@@ -22,6 +22,8 @@ public class PlayerStats : MonoBehaviour
 	private float manaBarFullLength;
 	private float manaBarOriginalX;
 	
+	private float accumulatedManaRegen;
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -79,9 +81,23 @@ public class PlayerStats : MonoBehaviour
 		manaToSpend.SetActive(false);
 	}
 
+	void FixedUpdate()
+	{
+		if (currentMana < maxMana)
+		{
+			accumulatedManaRegen += manaRegenSpeed * Time.deltaTime;
+			if (accumulatedManaRegen > 1.0f)
+			{
+				int amountToRegen = Mathf.Min(maxMana - currentMana, (int) Mathf.Floor(accumulatedManaRegen));
+				
+				SpendMana(-amountToRegen);
+				accumulatedManaRegen -= amountToRegen;
+			}
+		}
+	}
+
     // Update is called once per frame
     void Update()
     {
-
     }
 }
