@@ -38,7 +38,7 @@ public class GeneralUnitBehavior : MonoBehaviour
             if (summonTime <= 1.0f)
             {
                 summonTime += Time.deltaTime;
-                Debug.Log(summonTime);
+                //Debug.Log(summonTime);
             }
             else
             {

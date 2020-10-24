@@ -662,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
       propertyPath: alliedUnitPrefab
       value: 
-      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+      objectReference: {fileID: 7338772410420367037, guid: 00c155ba71d237b4188422984bf7a6e1,
         type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
@@ -2094,7 +2094,7 @@ PrefabInstance:
     - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
       propertyPath: alliedUnitPrefab
       value: 
-      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+      objectReference: {fileID: 7338772410420367037, guid: 00c155ba71d237b4188422984bf7a6e1,
         type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
@@ -2573,7 +2573,7 @@ PrefabInstance:
     - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
       propertyPath: alliedUnitPrefab
       value: 
-      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+      objectReference: {fileID: 7338772410420367037, guid: 00c155ba71d237b4188422984bf7a6e1,
         type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
@@ -2701,7 +2701,7 @@ PrefabInstance:
     - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
       propertyPath: alliedUnitPrefab
       value: 
-      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+      objectReference: {fileID: 7338772410420367037, guid: 00c155ba71d237b4188422984bf7a6e1,
         type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
@@ -2959,7 +2959,7 @@ PrefabInstance:
     - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
       propertyPath: alliedUnitPrefab
       value: 
-      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+      objectReference: {fileID: 7338772410420367037, guid: 00c155ba71d237b4188422984bf7a6e1,
         type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}

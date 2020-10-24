@@ -5,49 +5,53 @@ using UnityEngine;
 
 public class AllyBehavior : GeneralUnitBehavior
 {
-	  public bool isSpawned;
-
-    public GameObject mainTarget; //stores GameObject of current target.
+	public bool isSpawned;
     public GameObject nexusTarget; //stores GameObject of the Nexus, in case of allies it's the Nexus Regroup Area.
     private Vector2 targetLocation; //used to target mainTarget.
     public float followDistance = 24.0f; //variable that defines range for target acquisition.
     public SummoningEffect summonEffect;
+    public bool particleEmmited;
 
     // Start is called before the first frame update
     void Start()
     {
-		    isSpawned = false;
-		
+        isSpawned = false;
         nexusTarget = GameObject.Find("Nexus Regroup");
         mainTarget = nexusTarget;
-        Instantiate(summonEffect, transform.position, transform.rotation);
     }
 
     new void FixedUpdate()
     {
-      if (isSpawned)
-      {
-        base.FixedUpdate();
-        if (shouldMove == false)
-        {
-            if (mainTarget == null) //verifies if the ally has a target if not, assign nexus point to it.
+         if (isSpawned)
+         {  
+            base.FixedUpdate();
+            if (particleEmmited == false)
+            {
+                Instantiate(summonEffect, transform.position, transform.rotation);
+                particleEmmited = true;
+            }
+            
+            if (shouldMove == false) { 
+}
+            {
+                if (mainTarget == null) //verifies if the ally has a target if not, assign nexus point to it.
+                {
+                    mainTarget = nexusTarget;
+                    shouldMove = true;
+                }
+            }
+            if (mainTarget == null && shouldMove && startMove) //tests if main target exists, if not, attributes Nexus. Prevents targeting a destroyed object.
             {
                 mainTarget = nexusTarget;
-                shouldMove = true;
+                targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y); //gets Target location.
+                transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime); //moves Unit to target
             }
-        }
-        if (mainTarget == null && shouldMove && startMove) //tests if main target exists, if not, attributes Nexus. Prevents targeting a destroyed object.
-        {
-            mainTarget = nexusTarget;
-            targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y); //gets Target location.
-            transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime); //moves Unit to target.
-        }
-        if (shouldMove && startMove) //tests if it should move towards nexus in case first if didn't work.
-        {
-            targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
-        }
-      }
+            if (shouldMove && startMove) //tests if it should move towards nexus in case first if didn't work.
+            {
+                targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y);
+                transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
+            }
+          }
     }
 
     // Update is called once per frame
