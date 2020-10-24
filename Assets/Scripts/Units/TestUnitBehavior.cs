@@ -15,7 +15,7 @@ public class TestUnitBehavior : GeneralUnitBehavior
         speed = new Vector3(0, 0, 0);
     }
 
-    void FixedUpdate()
+    new void FixedUpdate()
     {
         transform.position += speed * Time.deltaTime;
     }
