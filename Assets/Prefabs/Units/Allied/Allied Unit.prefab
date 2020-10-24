@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8118781466346060577}
   m_Layer: 0
   m_Name: Allied Unit
-  m_TagString: AlliedUnit
+  m_TagString: SummonedUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,15 +206,22 @@ MonoBehaviour:
   attackDamage: 1
   attackSpeed: 1
   moveSpeed: 1
-  time: 0
+  attackTime: 0
+  particleTime: 0
+  summonTime: 0
   variavelTeste: {x: 0, y: 0, z: 0, w: 0}
+  startMove: 0
   shouldMove: 1
+  doneSummon: 0
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   attackStick: {fileID: 8960974287496970266, guid: c963190026b53624583fc3a3ebfd9bfd,
     type: 3}
+  generalEffect: {fileID: 3098287254575781735, guid: b67a00f468ebc414781e4182e6fce0b1,
+    type: 3}
+  isSpawned: 0
   nexusTarget: {fileID: 0}
   followDistance: 16
-  summonEffect: {fileID: 6535554556347083895, guid: 38aebd5d20545ff41a1b8e58d376d125,
-    type: 3}
+  particleEmmited: 0
 --- !u!58 &-6429889881441883335
 CircleCollider2D:
   m_ObjectHideFlags: 0
