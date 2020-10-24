@@ -213,6 +213,8 @@ MonoBehaviour:
     type: 3}
   nexusTarget: {fileID: 0}
   followDistance: 16
+  summonEffect: {fileID: 6535554556347083895, guid: 38aebd5d20545ff41a1b8e58d376d125,
+    type: 3}
 --- !u!58 &-6429889881441883335
 CircleCollider2D:
   m_ObjectHideFlags: 0

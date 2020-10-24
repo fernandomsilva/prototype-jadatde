@@ -13,8 +13,11 @@ public class GeneralUnitBehavior : MonoBehaviour
     public float attackSpeed = 1.0f; //define quantas vezes a unidade ataca por segundo.
     public float moveSpeed = 1.5f; //define o quão rápido a unidade se move na tela.
     public float time;
+    public float summonTime;
     public Quaternion variavelTeste;
-    public bool shouldMove = true;
+    public bool startMove = false;
+    public bool shouldMove = false;
+    public bool doneSummon = false;
     public AttackCollision attackStick;
         //mais atributos serão inseridos a medida que sejam pertinentes ao desenvolvimento do projeto.
 
@@ -30,6 +33,19 @@ public class GeneralUnitBehavior : MonoBehaviour
     // Update is called once per frame
     public void FixedUpdate()
     {
+        if (doneSummon == false)//1.6s for animation to take place.
+        {
+            if (summonTime <= 1.0f)
+            {
+                summonTime += Time.deltaTime;
+                Debug.Log(summonTime);
+            }
+            else
+            {
+                doneSummon = true;
+                startMove = true;
+            }
+        }
         time += Time.deltaTime;
         Vector3 pointTowards = transform.position.normalized;
         pointTowards.z = 0.0f;

@@ -8,12 +8,14 @@ public class AllyBehavior : GeneralUnitBehavior
     public GameObject nexusTarget; //stores GameObject of the Nexus, in case of allies it's the Nexus Regroup Area.
     private Vector2 targetLocation; //used to target mainTarget.
     public float followDistance = 24.0f; //variable that defines range for target acquisition.
+    public SummoningEffect summonEffect;
 
     // Start is called before the first frame update
     void Start()
     {
         nexusTarget = GameObject.Find("Nexus Regroup");
         mainTarget = nexusTarget;
+        Instantiate(summonEffect, transform.position, transform.rotation);
     }
 
     new void FixedUpdate()
@@ -27,13 +29,13 @@ public class AllyBehavior : GeneralUnitBehavior
                 shouldMove = true;
             }
         }
-        if (mainTarget == null && shouldMove) //tests if main target exists, if not, attributes Nexus. Prevents targeting a destroyed object.
+        if (mainTarget == null && shouldMove && startMove) //tests if main target exists, if not, attributes Nexus. Prevents targeting a destroyed object.
         {
             mainTarget = nexusTarget;
             targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y); //gets Target location.
             transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime); //moves Unit to target.
         }
-        if (shouldMove) //tests if it should move towards nexus in case first if didn't work.
+        if (shouldMove && startMove) //tests if it should move towards nexus in case first if didn't work.
         {
             targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
