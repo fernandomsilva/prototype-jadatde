@@ -25,11 +25,6 @@ public class CardMouseEvents : MonoBehaviour
 		playerStatsScript = GameObject.Find("Player").GetComponent<PlayerStats>();
 		backgroundMouseFlag = GameObject.Find("Field Background").GetComponent<BackgroundMouseFlag>();
 		
-		//if (areaOfEffect)
-		//{
-			//areaOfEffect.SetActive(false);
-		//}
-		
         selected = false;
 		myHUDPosition = transform.position;
 		
@@ -48,49 +43,75 @@ public class CardMouseEvents : MonoBehaviour
 			
 			transform.position = myHUDPosition;
 			
-			playerStatsScript.hideManaToSpend();
-			playerStatsScript.SpendMana(myCardStats.cost);
-			
 			myRenderer.enabled = true;
 			
-			if (myCardStats.type == "Spell")
-			{
-				areaOfEffect.layer = 0; // Layer 0 == Default
-				Collider2D[] overlappingColliders = new Collider2D[GameObject.FindGameObjectsWithTag("EnemyUnit").Length];
-				
-				areaOfEffect.GetComponent<CircleCollider2D>().OverlapCollider(new ContactFilter2D(), overlappingColliders);
-				
-				List<GameObject> enemiesInRange = new List<GameObject>();
-				
-				for (int i=0; i<overlappingColliders.Length; i++)
-				{
-					if (overlappingColliders[i].gameObject.tag == "EnemyUnit")
-					{
-						enemiesInRange.Add(overlappingColliders[i].gameObject);
-					}
-				}
-				
-				if (enemiesInRange.Count > 0)
-				{
-					myCardEffects.RunCardEffects(myCardStats, enemiesInRange);
-				}
-
-				areaOfEffect.SetActive(false);
-			}
+			playerStatsScript.hideManaToSpend();
 			
-			if (listOfAlliedUnitsToSpawn.Count > 0)
+			if (playerStatsScript.currentMana >= myCardStats.cost && backgroundMouseFlag.mouseIsOver)
 			{
 				playerStatsScript.SpendMana(myCardStats.cost);
-				
-				for (int i=0; i<listOfAlliedUnitsToSpawn.Count; i++)
-				{
-					listOfAlliedUnitsToSpawn[i].GetComponent<AllyBehavior>().isSpawned = true;
-					listOfAlliedUnitsToSpawn[i].layer = 0; // Layer 0 == Default
-					listOfAlliedUnitsToSpawn[i].GetComponent<AllyBehavior>().Summoned(myCardStats.health, myCardStats.attackDamage, myCardStats.attackSpeed, myCardStats.moveSpeed);
+
+				if (myCardStats.type == "Spell")
+				{			
+					areaOfEffect.layer = 0; // Layer 0 == Default
+					Collider2D[] overlappingColliders = new Collider2D[GameObject.FindGameObjectsWithTag("EnemyUnit").Length * 2];
+					
+					areaOfEffect.GetComponent<CircleCollider2D>().OverlapCollider(new ContactFilter2D(), overlappingColliders);
+					
+					List<GameObject> enemiesInRange = new List<GameObject>();
+					
+					for (int i=0; i<overlappingColliders.Length; i++)
+					{						
+						if (overlappingColliders[i])
+						{
+							if (!overlappingColliders[i].isTrigger && overlappingColliders[i].gameObject.tag == "EnemyUnit")
+							{
+								enemiesInRange.Add(overlappingColliders[i].gameObject);
+							}
+						}
+					}
+					
+					if (enemiesInRange.Count > 0)
+					{
+						myCardEffects.RunCardEffects(myCardStats, enemiesInRange);
+					}
+
+					areaOfEffect.SetActive(false);
 				}
 				
-				listOfAlliedUnitsToSpawn.Clear();
-			}			
+				if (listOfAlliedUnitsToSpawn.Count > 0)
+				{	
+					for (int i=0; i<listOfAlliedUnitsToSpawn.Count; i++)
+					{
+						listOfAlliedUnitsToSpawn[i].GetComponent<AllyBehavior>().isSpawned = true;
+						listOfAlliedUnitsToSpawn[i].layer = 0; // Layer 0 == Default
+						listOfAlliedUnitsToSpawn[i].GetComponent<AllyBehavior>().Summoned(myCardStats.health, myCardStats.attackDamage, myCardStats.attackSpeed, myCardStats.moveSpeed);
+					}
+
+					listOfAlliedUnitsToSpawn.Clear();
+				}
+				
+				myCardStats.toRemove = true;
+			}
+			else
+			{
+				if (myCardStats.type == "Spell")
+				{
+					areaOfEffect.SetActive(false);
+				}
+				else
+				{
+					if (listOfAlliedUnitsToSpawn.Count > 0)
+					{
+						for (int i=0; i<listOfAlliedUnitsToSpawn.Count; i++)
+						{
+							Destroy(listOfAlliedUnitsToSpawn[i].gameObject);
+						}
+						
+						listOfAlliedUnitsToSpawn.Clear();
+					}
+				}
+			}
 		}
 	}
 	
@@ -126,7 +147,7 @@ public class CardMouseEvents : MonoBehaviour
 					if (areaOfEffect.activeSelf == false)
 					{
 						areaOfEffect.SetActive(true);
-						areaOfEffect.layer = 5; // Layer 5 == UI
+						areaOfEffect.layer = 8; // Layer 8 == Effects
 						areaOfEffect.transform.localScale = new Vector3(myCardStats.intensity, myCardStats.intensity, 1.0f);
 					}
 				}

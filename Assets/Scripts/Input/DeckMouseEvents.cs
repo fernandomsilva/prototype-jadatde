@@ -5,6 +5,8 @@ using UnityEngine;
 public class DeckMouseEvents : MonoBehaviour
 {
 	public GameObject cards;
+	public PlayerStats playerStats;
+	public int cardDrawMPCost;
 	
 	private CardStats[] cardSlots;
 	private int maxHandSize;
@@ -16,8 +18,6 @@ public class DeckMouseEvents : MonoBehaviour
     {
         cardSlots = cards.GetComponentsInChildren<CardStats>();
 		maxHandSize = 5;
-		
-		//Debug.Log(NumberOfCardsInHand());
     }
 	
 	int NumberOfCardsInHand()
@@ -43,17 +43,57 @@ public class DeckMouseEvents : MonoBehaviour
 	{
 		int handLength = NumberOfCardsInHand();
 		
-		if (handLength < maxHandSize)
+		if (handLength < maxHandSize && playerStats.currentMana >= cardDrawMPCost)
 		{
 			int randomValue = Random.Range(0, 3);
-			
-			cardSlots[handLength].loadCard(deck[randomValue]);
+		
+			playerStats.SpendMana(cardDrawMPCost);
+			cardSlots[handLength].LoadCard(deck[randomValue]);
 		}
+	}
+	
+	int NumberOfCardsToRemove()
+	{
+		int count = 0;
+		
+		foreach (CardStats card in cardSlots)
+		{
+			if (card.toRemove)
+			{
+				count += 1;
+			}
+		}
+		
+		return count;
+	}
+	
+	void RemoveCards()
+	{	
+		if (NumberOfCardsToRemove() > 0)
+		{
+			for (int i=0; i<maxHandSize-1; i++)
+			{
+				if (cardSlots[i].toRemove)
+				{
+					for (int j=i+1; j<maxHandSize; j++)
+					{
+						cardSlots[j-1].ResetCard();
+						cardSlots[j-1].LoadCard(cardSlots[j].cardName);
+					}
+					
+					cardSlots[maxHandSize-1].ResetCard();
+				}
+			}
+			if (cardSlots[maxHandSize-1].toRemove)
+			{
+				cardSlots[maxHandSize-1].ResetCard();
+			}
+		}		
 	}
 
     // Update is called once per frame
     void Update()
     {
-        
+		RemoveCards();
     }
 }

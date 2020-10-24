@@ -783,6 +783,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards: {fileID: 764865710}
+  playerStats: {fileID: 1602605750}
+  cardDrawMPCost: 50
 --- !u!61 &720637594
 BoxCollider2D:
   m_ObjectHideFlags: 0
