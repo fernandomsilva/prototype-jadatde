@@ -202,15 +202,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainTarget: {fileID: 0}
   myHandle: {fileID: 665457656477327219}
-  health: 5
+  health: 10
   attackDamage: 1
   attackSpeed: 1
   moveSpeed: 1
-  time: 0
+  attackTime: 0
+  particleTime: 0
+  summonTime: 0
   variavelTeste: {x: 0, y: 0, z: 0, w: 0}
+  startMove: 0
   shouldMove: 1
+  doneSummon: 0
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   attackStick: {fileID: 8960974287496970266, guid: c963190026b53624583fc3a3ebfd9bfd,
     type: 3}
+  particleEffect: {fileID: 0}
   nexusTarget: {fileID: 0}
   followDistance: 8
 --- !u!58 &4435810277726666793

@@ -8,18 +8,21 @@ public class GeneralUnitBehavior : MonoBehaviour
 {
     public GameObject mainTarget; //stores GameObject of current target.
     public GameObject myHandle; //stores object handle.
-    public int health = 5; //define a vida a unidade; pode vir a ser int, dependendo se quebraremos ou não o dano em frações.
+    public int health = 1; //define a vida a unidade; pode vir a ser int, dependendo se quebraremos ou não o dano em frações.
     public int attackDamage = 1; //define o dano causado por ataque da unidade; pode vir a ser int, pela mesma razão de cima.
     public float attackSpeed = 1.0f; //define quantas vezes a unidade ataca por segundo.
-    public float moveSpeed = 1.5f; //define o quão rápido a unidade se move na tela.
-    public float time;
+    public float moveSpeed = 1.0f; //define o quão rápido a unidade se move na tela.
+    public float attackTime;
+    public float particleTime;
     public float summonTime;
     public Quaternion variavelTeste;
     public bool startMove = false;
     public bool shouldMove = false;
     public bool doneSummon = false;
+    public Color originalColor;
     public AttackCollision attackStick;
-        //mais atributos serão inseridos a medida que sejam pertinentes ao desenvolvimento do projeto.
+    public GeneralEffect particleEffect;
+    //mais atributos serão inseridos a medida que sejam pertinentes ao desenvolvimento do projeto.
 
 
 
@@ -28,11 +31,27 @@ public class GeneralUnitBehavior : MonoBehaviour
     void Start()
     {
         Vector3 position = new Vector3(transform.position.x, transform.position.y, 0); //coloca todas as unidades criadas no eixo z 0.
+        originalColor = GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
     public void FixedUpdate()
     {
+        if (particleTime >= 1.3f)
+        {
+            particleTime = 0.0f;
+            if (moveSpeed == 0.5f)
+            {
+                particleEffect = Resources.Load<GeneralEffect>("Effects/FreezeEffect");
+                Instantiate(particleEffect, transform.position, transform.rotation);
+                particleEffect.timeDeath = 0.6f;
+            }
+        }
+        else
+        {
+            particleTime += Time.deltaTime;
+        }
+        
         if (doneSummon == false)//1.6s for animation to take place.
         {
             if (summonTime <= 1.0f)
@@ -46,7 +65,8 @@ public class GeneralUnitBehavior : MonoBehaviour
                 startMove = true;
             }
         }
-        time += Time.deltaTime;
+        attackTime += Time.deltaTime;
+        particleTime += Time.deltaTime;
         Vector3 pointTowards = transform.position.normalized;
         pointTowards.z = 0.0f;
         Vector3 pointTarget = (mainTarget.transform.position - transform.position).normalized;
@@ -82,9 +102,18 @@ public class GeneralUnitBehavior : MonoBehaviour
         }
     }
 
+    public void ApplyEffect(string effect)
+    {
+        if (effect == "Slow")
+        {
+            moveSpeed = moveSpeed * 0.5f;
+            Debug.Log("I " + gameObject.name + ", am slowed!");
+        }
+    }
+
     public void OnTriggerStay2D(Collider2D target) //attacks between opposing factions.
     {
-        if (time >= 1/attackSpeed)
+        if (attackTime >= 1/attackSpeed)
         {
             if (gameObject.tag == "AlliedUnit" && target.tag == "EnemyUnit")
             {
@@ -94,7 +123,7 @@ public class GeneralUnitBehavior : MonoBehaviour
                 stick.targetCollider = target;
                 stick.damage = attackDamage;
                 stick.intendedTarget = "EnemyUnit";
-                time = 0.0f;
+                attackTime = 0.0f;
             }
 
             if (gameObject.tag == "EnemyUnit" && target.tag == "AlliedUnit")
@@ -105,7 +134,7 @@ public class GeneralUnitBehavior : MonoBehaviour
                 stick.targetCollider = target;
                 stick.damage = attackDamage;
                 stick.intendedTarget = "AlliedUnit";
-                time = 0.0f;
+                attackTime = 0.0f;
             }
 
             if (gameObject.tag == "EnemyUnit" && target.tag == "Nexus")
@@ -116,7 +145,7 @@ public class GeneralUnitBehavior : MonoBehaviour
                 stick.targetCollider = target;
                 stick.damage = attackDamage;
                 stick.intendedTarget = "Nexus";
-                time = 0.0f;
+                attackTime = 0.0f;
                 //AttackCollision stick = Instantiate(attackStick, transform.position, transform.rotation);
                 //stick.direction = (mainTarget.transform.position - transform.position).normalized;
                 //stick.direction.z = 0.0f;

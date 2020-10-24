@@ -9,6 +9,7 @@ TagManager:
   - EnemyUnit
   - Nexus
   - Effects
+  - SummonedUnit
   layers:
   - Default
   - TransparentFX
