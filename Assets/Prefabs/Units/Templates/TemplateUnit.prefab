@@ -183,9 +183,15 @@ MonoBehaviour:
   attackDamage: 1
   attackSpeed: 1
   moveSpeed: 1
+  time: 0
+  summonTime: 0
   variavelTeste: {x: 0, y: 0, z: 0, w: 0}
-  hasCollided: 0
+  startMove: 0
+  shouldMove: 0
+  doneSummon: 0
   attackStick: {fileID: 8960974287496970266, guid: c963190026b53624583fc3a3ebfd9bfd,
+    type: 3}
+  generalEffect: {fileID: 6535554556347083895, guid: 38aebd5d20545ff41a1b8e58d376d125,
     type: 3}
 --- !u!1 &6118250419448387303
 GameObject:

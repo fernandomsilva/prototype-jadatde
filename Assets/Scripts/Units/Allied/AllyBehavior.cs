@@ -9,7 +9,6 @@ public class AllyBehavior : GeneralUnitBehavior
     public GameObject nexusTarget; //stores GameObject of the Nexus, in case of allies it's the Nexus Regroup Area.
     private Vector2 targetLocation; //used to target mainTarget.
     public float followDistance = 24.0f; //variable that defines range for target acquisition.
-    public SummoningEffect summonEffect;
     public bool particleEmmited;
 
     // Start is called before the first frame update
@@ -27,7 +26,9 @@ public class AllyBehavior : GeneralUnitBehavior
             base.FixedUpdate();
             if (particleEmmited == false)
             {
-                Instantiate(summonEffect, transform.position, transform.rotation);
+                particleEffect = Resources.Load<GeneralEffect>("Effects/SummonEffect");
+                Instantiate(particleEffect, transform.position, transform.rotation);
+                particleEffect.timeDeath = 1.6f;
                 particleEmmited = true;
             }
             
@@ -45,11 +46,13 @@ public class AllyBehavior : GeneralUnitBehavior
                 mainTarget = nexusTarget;
                 targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y); //gets Target location.
                 transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime); //moves Unit to target
+                gameObject.tag = "AlliedUnit";
             }
             if (shouldMove && startMove) //tests if it should move towards nexus in case first if didn't work.
             {
                 targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y);
                 transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
+                gameObject.tag = "AlliedUnit";
             }
           }
     }

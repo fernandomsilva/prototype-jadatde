@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CardEffects : MonoBehaviour
 {
-	public void RunCardEffects(CardStats thisCardStats, List<GameObject> enemiesInRange)
+    public GeneralEffect particleEffect;
+
+    public void RunCardEffects(CardStats thisCardStats, List<GameObject> enemiesInRange)
 	{
 		cardEffect(thisCardStats.effect1, thisCardStats.magnitude, enemiesInRange);
 		cardEffect(thisCardStats.effect2, 0, enemiesInRange);
@@ -18,9 +20,16 @@ public class CardEffects : MonoBehaviour
 			{
 				if (effect == "Damage")
 				{
-					enemy.GetComponent<EnemyBehavior>().OnHit((int) power);
-				}
-			}
-		}
+                    enemy.GetComponent<EnemyBehavior>().OnHit((int) power);
+                    //fumaça
+                    particleEffect = Resources.Load<GeneralEffect>("Effects/FireEffect");
+                    Instantiate(particleEffect, enemy.transform.position, enemy.transform.rotation);
+                }
+                if (effect == "Slow")
+                {
+                    enemy.GetComponent<EnemyBehavior>().ApplyEffect(effect);
+                }
+            }
+        }
 	}
 }
