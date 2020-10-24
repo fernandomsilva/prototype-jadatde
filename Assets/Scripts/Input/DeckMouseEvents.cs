@@ -18,8 +18,6 @@ public class DeckMouseEvents : MonoBehaviour
     {
         cardSlots = cards.GetComponentsInChildren<CardStats>();
 		maxHandSize = 5;
-		
-		//Debug.Log(NumberOfCardsInHand());
     }
 	
 	int NumberOfCardsInHand()
@@ -73,18 +71,13 @@ public class DeckMouseEvents : MonoBehaviour
 	{	
 		if (NumberOfCardsToRemove() > 0)
 		{
-			foreach (CardStats card in cardSlots)
-			{
-				Debug.Log(card.cardName);
-			}
-			Debug.Log("------");	
-
 			for (int i=0; i<maxHandSize-1; i++)
 			{
 				if (cardSlots[i].toRemove)
 				{
 					for (int j=i+1; j<maxHandSize; j++)
 					{
+						cardSlots[j-1].ResetCard();
 						cardSlots[j-1].LoadCard(cardSlots[j].cardName);
 					}
 					
@@ -95,17 +88,12 @@ public class DeckMouseEvents : MonoBehaviour
 			{
 				cardSlots[maxHandSize-1].ResetCard();
 			}
-			
-			foreach (CardStats card in cardSlots)
-			{
-				Debug.Log(card.cardName);
-			}
-			Debug.Log("=========");
 		}		
 	}
 
     // Update is called once per frame
     void Update()
     {
+		RemoveCards();
     }
 }
