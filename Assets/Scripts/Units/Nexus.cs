@@ -14,7 +14,7 @@ public class Nexus : MonoBehaviour
         
     }
 
-    void NexusHit (int damage)
+    void OnHit (int damage)
     {
         playerCharacter.GetComponent<PlayerStats>().LoseHealth(damage);
         Debug.Log(playerCharacter.GetComponent<PlayerStats>().currentHealth + " health remains on the nexus.");
