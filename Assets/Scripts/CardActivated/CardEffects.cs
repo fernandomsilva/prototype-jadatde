@@ -14,9 +14,12 @@ public class CardEffects : MonoBehaviour
 	{
 		foreach (GameObject enemy in enemiesInRange)
 		{
-			if (effect == "Damage")
+			if (enemy)
 			{
-				enemy.GetComponent<EnemyBehavior>().OnHit((int) power);
+				if (effect == "Damage")
+				{
+					enemy.GetComponent<EnemyBehavior>().OnHit((int) power);
+				}
 			}
 		}
 	}

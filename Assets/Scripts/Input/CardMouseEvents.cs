@@ -49,6 +49,7 @@ public class CardMouseEvents : MonoBehaviour
 			transform.position = myHUDPosition;
 			
 			playerStatsScript.hideManaToSpend();
+			playerStatsScript.SpendMana(myCardStats.cost);
 			
 			myRenderer.enabled = true;
 			
@@ -85,7 +86,7 @@ public class CardMouseEvents : MonoBehaviour
 				{
 					listOfAlliedUnitsToSpawn[i].GetComponent<AllyBehavior>().isSpawned = true;
 					listOfAlliedUnitsToSpawn[i].layer = 0; // Layer 0 == Default
-					listOfAlliedUnitsToSpawn[i].GetComponent<AllyBehavior>().isSummoned(myCardStats.health, myCardStats.attackDamage, myCardStats.attackSpeed, myCardStats.moveSpeed);
+					listOfAlliedUnitsToSpawn[i].GetComponent<AllyBehavior>().Summoned(myCardStats.health, myCardStats.attackDamage, myCardStats.attackSpeed, myCardStats.moveSpeed);
 				}
 				
 				listOfAlliedUnitsToSpawn.Clear();
