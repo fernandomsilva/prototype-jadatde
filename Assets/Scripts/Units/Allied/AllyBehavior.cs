@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class AllyBehavior : GeneralUnitBehavior
 {
+	  public bool isSpawned;
+
+    public GameObject mainTarget; //stores GameObject of current target.
     public GameObject nexusTarget; //stores GameObject of the Nexus, in case of allies it's the Nexus Regroup Area.
     private Vector2 targetLocation; //used to target mainTarget.
     public float followDistance = 24.0f; //variable that defines range for target acquisition.
@@ -13,6 +16,8 @@ public class AllyBehavior : GeneralUnitBehavior
     // Start is called before the first frame update
     void Start()
     {
+		    isSpawned = false;
+		
         nexusTarget = GameObject.Find("Nexus Regroup");
         mainTarget = nexusTarget;
         Instantiate(summonEffect, transform.position, transform.rotation);
@@ -20,6 +25,8 @@ public class AllyBehavior : GeneralUnitBehavior
 
     new void FixedUpdate()
     {
+      if (isSpawned)
+      {
         base.FixedUpdate();
         if (shouldMove == false)
         {
@@ -40,6 +47,7 @@ public class AllyBehavior : GeneralUnitBehavior
             targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
         }
+      }
     }
 
     // Update is called once per frame

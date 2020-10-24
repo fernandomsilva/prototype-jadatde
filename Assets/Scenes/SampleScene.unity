@@ -659,6 +659,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
@@ -2086,6 +2091,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
@@ -2169,6 +2179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Area of Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170068844742196332, guid: b1dfe59b70afd374887ec0787e0239c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170068844742196333, guid: b1dfe59b70afd374887ec0787e0239c0,
         type: 3}
@@ -2555,6 +2570,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
@@ -2678,6 +2698,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
@@ -2931,6 +2956,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
