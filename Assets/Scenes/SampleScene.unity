@@ -2370,7 +2370,7 @@ MonoBehaviour:
   maxHealth: 50
   currentMana: 1000
   maxMana: 1000
-  manaRegenSpeed: 0
+  manaRegenSpeed: 2
   healthBar: {fileID: 1122080113}
   manaBar: {fileID: 1581974876}
   manaToSpend: {fileID: 1731248681}
