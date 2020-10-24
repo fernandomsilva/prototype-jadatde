@@ -28,7 +28,7 @@ public class GeneralUnitBehavior : MonoBehaviour
     }
     
     //função que vai definir os atributos da unidade ao summoná-la.
-    public void isSummoned(float ht, int atk, float atkS, float mS)
+    public void Summoned(float ht, int atk, float atkS, float mS)
     {
         health = ht;
         attackDamage = atk;

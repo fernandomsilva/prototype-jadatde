@@ -434,7 +434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214508839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.72, z: 1}
+  m_LocalPosition: {x: 0, y: 0.72, z: 0}
   m_LocalScale: {x: 15.113, y: 6.3291793, z: 1}
   m_Children: []
   m_Father: {fileID: 1780943259}
@@ -637,6 +637,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
@@ -2065,6 +2070,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
@@ -2148,6 +2158,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Area of Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170068844742196332, guid: b1dfe59b70afd374887ec0787e0239c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170068844742196333, guid: b1dfe59b70afd374887ec0787e0239c0,
         type: 3}
@@ -2685,6 +2700,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
@@ -2808,6 +2828,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase
@@ -3061,6 +3086,11 @@ PrefabInstance:
       propertyPath: areaOfEffect
       value: 
       objectReference: {fileID: 1488757695}
+    - target: {fileID: 282909446, guid: 90dacdc38186e1a4fa9a1394dbfb6077, type: 3}
+      propertyPath: alliedUnitPrefab
+      value: 
+      objectReference: {fileID: 8027875599747332496, guid: 00c155ba71d237b4188422984bf7a6e1,
+        type: 3}
     - target: {fileID: 2495937738392269251, guid: 90dacdc38186e1a4fa9a1394dbfb6077,
         type: 3}
       propertyPath: cardDatabase

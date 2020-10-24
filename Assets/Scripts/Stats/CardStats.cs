@@ -19,6 +19,8 @@ public class CardStats : MonoBehaviour
 	public float magnitude;
 	public float intensity;
 	public int cost;
+	public string effect1;
+	public string effect2;
 	
 	private SpriteRenderer mySpriteRenderer;
 	
@@ -83,6 +85,12 @@ public class CardStats : MonoBehaviour
 					break;
 				case "cost":
 					cost = int.Parse(attributeDict[key]);
+					break;
+				case "effect1":
+					effect1 = attributeDict[key];
+					break;
+				case "effect2":
+					effect2 = attributeDict[key];
 					break;
 			}
 		}

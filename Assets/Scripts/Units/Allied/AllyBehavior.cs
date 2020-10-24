@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AllyBehavior : GeneralUnitBehavior
 {
+	public bool isSpawned;
+
     public GameObject mainTarget; //stores GameObject of current target.
     public GameObject nexusTarget; //stores GameObject of the Nexus, in case of allies it's the Nexus Regroup Area.
     private Vector2 targetLocation; //used to target mainTarget.
@@ -14,29 +16,34 @@ public class AllyBehavior : GeneralUnitBehavior
     // Start is called before the first frame update
     void Start()
     {
+		isSpawned = false;
+		
         nexusTarget = GameObject.Find("Nexus Regroup");
     }
 
     void FixedUpdate()
     {
-        if (shouldMove == false)
-        {
-            if (mainTarget != nexusTarget) //verifies if the ally has a target other than the nexus and assign to it.
-            {
-                shouldMove = true;
-            }
-        }
-        if (mainTarget == null && shouldMove) //tests if main target exists, if not, attributes Nexus. Prevents targeting a destroyed object.
-        {
-            mainTarget = nexusTarget;
-            targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y); //gets Target location.
-            transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime); //moves Unit to target.
-        }
-        if (shouldMove) //tests if it should move towards nexus in case first if didn't work.
-        {
-            targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
-        }
+		if (isSpawned)
+		{
+			if (shouldMove == false)
+			{
+				if (mainTarget != nexusTarget) //verifies if the ally has a target other than the nexus and assign to it.
+				{
+					shouldMove = true;
+				}
+			}
+			if (mainTarget == null && shouldMove) //tests if main target exists, if not, attributes Nexus. Prevents targeting a destroyed object.
+			{
+				mainTarget = nexusTarget;
+				targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y); //gets Target location.
+				transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime); //moves Unit to target.
+			}
+			if (shouldMove) //tests if it should move towards nexus in case first if didn't work.
+			{
+				targetLocation = new Vector2(mainTarget.transform.position.x, mainTarget.transform.position.y);
+				transform.position = Vector2.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
+			}
+		}
     }
 
     // Update is called once per frame

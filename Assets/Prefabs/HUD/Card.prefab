@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 282909445}
   - component: {fileID: 282909446}
   - component: {fileID: 2495937738392269251}
+  - component: {fileID: -8335111613381202415}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaOfEffect: {fileID: 0}
+  alliedUnitPrefab: {fileID: 0}
 --- !u!114 &2495937738392269251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,3 +151,17 @@ MonoBehaviour:
   magnitude: 0
   intensity: 0
   cost: 0
+  effect1: 
+  effect2: 
+--- !u!114 &-8335111613381202415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3294144044530272943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e480142478348408a299a81d4de196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
