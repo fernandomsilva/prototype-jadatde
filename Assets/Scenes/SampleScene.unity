@@ -1967,6 +1967,7 @@ MonoBehaviour:
   enemySpawner: {fileID: 1107333634}
   enemyAlive: {fileID: 0}
   winText: {fileID: 869404971}
+  pauseButton: {fileID: 1157696278}
   hasStarted: 0
   waveCleared: 0
   timeUntil: 0

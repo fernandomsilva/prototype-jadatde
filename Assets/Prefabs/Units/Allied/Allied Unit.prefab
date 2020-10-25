@@ -156,8 +156,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 37213b005c3f34347aa877ca8a454632, type: 3}
-  m_Color: {r: 0.15456925, g: 0.9339623, b: 0.083704144, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4c62367af5d87c3449c1593eea0e3ce1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -213,11 +213,11 @@ MonoBehaviour:
   startMove: 0
   shouldMove: 1
   doneSummon: 0
+  isUnderEffect: 0
   originalColor: {r: 0, g: 0, b: 0, a: 0}
   attackStick: {fileID: 8960974287496970266, guid: c963190026b53624583fc3a3ebfd9bfd,
     type: 3}
-  generalEffect: {fileID: 3098287254575781735, guid: b67a00f468ebc414781e4182e6fce0b1,
-    type: 3}
+  particleEffect: {fileID: 0}
   isSpawned: 0
   nexusTarget: {fileID: 0}
   followDistance: 16

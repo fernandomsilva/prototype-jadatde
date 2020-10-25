@@ -156,8 +156,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 37213b005c3f34347aa877ca8a454632, type: 3}
-  m_Color: {r: 0.8301887, g: 0.07440368, b: 0.07440368, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c989c68cb2c86264c8ada709cd692b81, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   startMove: 0
   shouldMove: 1
   doneSummon: 0
+  isUnderEffect: 0
   originalColor: {r: 0, g: 0, b: 0, a: 0}
   attackStick: {fileID: 8960974287496970266, guid: c963190026b53624583fc3a3ebfd9bfd,
     type: 3}

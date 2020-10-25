@@ -9,6 +9,7 @@ public class PlayButton : MonoBehaviour
     public GameObject enemySpawner;
     public GameObject enemyAlive;
     public GameObject winText;
+    public GameObject pauseButton;
     public bool hasStarted;
     public bool waveCleared;
     public float timeUntil;
@@ -70,6 +71,9 @@ public class PlayButton : MonoBehaviour
     public void OnMouseDown()
     {
         hasStarted = true;
+        Time.timeScale = 1;
+        pauseButton.GetComponent<SpriteRenderer>().color = Color.white;
+        pauseButton.GetComponent<PauseButton>().isPaused = false;
         gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
     }
 }

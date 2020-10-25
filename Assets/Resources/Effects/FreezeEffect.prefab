@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4802623353973052558}
   - component: {fileID: 4802623353973052559}
   m_Layer: 0
-  m_Name: Freeze Effect
+  m_Name: FreezeEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.9452324, b: 1, a: 0.5}
+      maxColor: {r: 0.096915014, g: 0.23584908, b: 0.07231222, a: 0.5}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

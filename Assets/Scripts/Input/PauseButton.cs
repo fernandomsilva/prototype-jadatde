@@ -15,10 +15,7 @@ public class PauseButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPaused == false)
-        {
-            Time.timeScale = 1;
-        }
+
     }
 
     public void OnMouseDown()
