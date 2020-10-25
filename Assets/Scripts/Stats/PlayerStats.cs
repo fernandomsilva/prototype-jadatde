@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
 	
 	public GameObject manaBar;
 	public GameObject manaToSpend;
+    public GameObject gameRun;
 	private SpriteRenderer manaBarSpriteRenderer;
 	private SpriteRenderer manaToSpendSpriteRenderer;
 	private float manaBarFullLength;
@@ -83,7 +84,7 @@ public class PlayerStats : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (currentMana < maxMana)
+        if (currentMana < maxMana && gameRun.GetComponent<PlayButton>().hasStarted == true)
 		{
 			accumulatedManaRegen += manaRegenSpeed * Time.deltaTime;
 			if (accumulatedManaRegen > 1.0f)

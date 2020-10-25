@@ -20,10 +20,23 @@ public class CardEffects : MonoBehaviour
 			{
 				if (effect == "Damage")
 				{
-                    enemy.GetComponent<EnemyBehavior>().OnHit((int) power);
-                    //fumaça
-                    particleEffect = Resources.Load<GeneralEffect>("Effects/FireEffect");
-                    Instantiate(particleEffect, enemy.transform.position, enemy.transform.rotation);
+                    int checkCritical = Random.Range(1, 5);
+                    if (checkCritical == 1)
+                    {
+                        enemy.GetComponent<EnemyBehavior>().OnHit((int)power*2);
+                        //fumaça
+                        particleEffect = Resources.Load<GeneralEffect>("Effects/FireEffectCrit");
+                        Instantiate(particleEffect, enemy.transform.position, enemy.transform.rotation);
+                        particleEffect.timeDeath = 0.6f;
+                    }
+                    else
+                    {
+                        enemy.GetComponent<EnemyBehavior>().OnHit((int)power);
+                        //fumaça
+                        particleEffect = Resources.Load<GeneralEffect>("Effects/FireEffect");
+                        Instantiate(particleEffect, enemy.transform.position, enemy.transform.rotation);
+                        particleEffect.timeDeath = 0.6f;
+                    }
                 }
                 if (effect == "Slow")
                 {

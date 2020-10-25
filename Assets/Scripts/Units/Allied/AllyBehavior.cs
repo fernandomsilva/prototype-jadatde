@@ -97,7 +97,7 @@ public class AllyBehavior : GeneralUnitBehavior
 
     new void OnTriggerStay2D(Collider2D collisionTarget) //if object stays connected to target it stops moving.
     {
-        if (collisionTarget.tag == mainTarget.tag)
+        if (mainTarget != null && collisionTarget.tag == mainTarget.tag)
         {
             base.OnTriggerStay2D(collisionTarget);
             shouldMove = false;

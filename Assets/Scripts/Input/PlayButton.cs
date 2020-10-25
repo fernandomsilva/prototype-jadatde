@@ -48,7 +48,7 @@ public class PlayButton : MonoBehaviour
             if (timeUntil < 0)
             {
                 countdown.GetComponent<Text>().text = "Wave " + currentWave + "/" + numberWaves + " is here!";
-                enemySpawner.GetComponent<EnemySpawner>().SpawnEnemies();
+                enemySpawner.GetComponent<EnemySpawner>().SpawnEnemies(currentWave);
                 timeUntil = 5.0f;
                 waveCleared = false;
                 currentWave++;
@@ -62,6 +62,7 @@ public class PlayButton : MonoBehaviour
         {
             countdown.GetComponent<Text>().text = "All cleared!";
             winText.GetComponent<Text>().text = "You Win!\n Press R to reset and play again.";
+            Time.timeScale = 0;
         }
 
     }

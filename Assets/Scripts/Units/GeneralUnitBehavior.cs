@@ -19,6 +19,7 @@ public class GeneralUnitBehavior : MonoBehaviour
     public bool startMove = false;
     public bool shouldMove = false;
     public bool doneSummon = false;
+    public bool isUnderEffect = false;
     public Color originalColor;
     public AttackCollision attackStick;
     public GeneralEffect particleEffect;
@@ -44,7 +45,7 @@ public class GeneralUnitBehavior : MonoBehaviour
             {
                 particleEffect = Resources.Load<GeneralEffect>("Effects/FreezeEffect");
                 Instantiate(particleEffect, transform.position, transform.rotation);
-                particleEffect.timeDeath = 0.6f;
+                particleEffect.timeDeath = 0.3f;
             }
         }
         else
@@ -69,13 +70,16 @@ public class GeneralUnitBehavior : MonoBehaviour
         particleTime += Time.deltaTime;
         Vector3 pointTowards = transform.position.normalized;
         pointTowards.z = 0.0f;
-        Vector3 pointTarget = (mainTarget.transform.position - transform.position).normalized;
-        pointTowards.z = 0.0f;
-        float dotProduct = Vector3.Dot(pointTarget, transform.right);
-        float targetAngle = Vector3.Angle(pointTowards, pointTarget);
-        //Debug.Log(targetAngle);
-        Quaternion targetRotation = Quaternion.Euler(0, 0, -1 * Mathf.Sign(dotProduct) * targetAngle);
-        transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * targetRotation, moveSpeed * 3 * Time.deltaTime);
+        if (mainTarget != null)
+        {
+            Vector3 pointTarget = (mainTarget.transform.position - transform.position).normalized;
+            pointTowards.z = 0.0f;
+            float dotProduct = Vector3.Dot(pointTarget, transform.right);
+            float targetAngle = Vector3.Angle(pointTowards, pointTarget);
+            //Debug.Log(targetAngle);
+            Quaternion targetRotation = Quaternion.Euler(0, 0, -1 * Mathf.Sign(dotProduct) * targetAngle);
+            transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * targetRotation, moveSpeed * 3 * Time.deltaTime);
+        }
     }
 
     //função que vai definir os atributos da unidade ao summoná-la.
@@ -92,7 +96,7 @@ public class GeneralUnitBehavior : MonoBehaviour
     {
         health -= damage;
         //damage será devidamente multiplicada por valores futuros de tipo e elemento de dano, bem como resistências a elementos.
-        Debug.Log("I " + gameObject.name + " was hit for " + damage + " damage! Only " + (health) + " hitpoints remain");
+        //Debug.Log("I " + gameObject.name + " was hit for " + damage + " damage! Only " + (health) + " hitpoints remain");
 
         if (health <= 0)
         {
@@ -104,10 +108,12 @@ public class GeneralUnitBehavior : MonoBehaviour
 
     public void ApplyEffect(string effect)
     {
-        if (effect == "Slow")
+        if (effect == "Slow" && isUnderEffect == false)
         {
             moveSpeed = moveSpeed * 0.5f;
-            Debug.Log("I " + gameObject.name + ", am slowed!");
+            attackSpeed = attackSpeed * 0.75f;
+            isUnderEffect = true;
+            //Debug.Log("I " + gameObject.name + ", am slowed!");
         }
     }
 

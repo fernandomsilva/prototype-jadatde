@@ -22,8 +22,8 @@ public class TestCommands : MonoBehaviour
     {
         if (Input.GetKeyDown("r"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (Input.GetKeyDown("e"))//spawns enemies.
         {
